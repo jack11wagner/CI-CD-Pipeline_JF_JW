@@ -1,14 +1,11 @@
 name: Run Flask Tests
 on:
-  status:
-   branches:
-     -main
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
  
  
 jobs:
