@@ -28,7 +28,7 @@ jobs:
           echo "API_KEY = ab6c5f31aaa48f332b5ffc67168bf1b69b849442" > .env
       - name: Run Flask Server
         run: |
-          .venv/bin/python3 simple_app.py
+          .venv/bin/python3 simple_app.py &
       - name: Run tests with pytest
         run: pytest 
 
