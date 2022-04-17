@@ -1,12 +1,16 @@
 name: Run Flask Tests
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+  status:
+   branches:
+     -main
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+ 
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +25,10 @@ jobs:
           python -m pip install --upgrade pip
           python3 -m venv .venv
           .venv/bin/pip install -r requirements.txt
+      - name: Set Environment Variables
+        run: | 
+          touch .env
+          echo "API_KEY = ab6c5f31aaa48f332b5ffc67168bf1b69b849442" > .env 
       - name: Run Flask Server
         run: |
           .venv/bin/python3 simple_app.py
