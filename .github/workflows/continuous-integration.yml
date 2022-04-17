@@ -23,8 +23,6 @@ jobs:
           .venv/bin/pip install -r requirements.txt
       - name: Run Flask Server
         run: |
-          touch .env
-          echo "API_KEY = ab6c5f31aaa48f332b5ffc67168bf1b69b849442" >> .env
           .venv/bin/python3 simple_app.py
       - name: Run tests with pytest
         run: pytest 
