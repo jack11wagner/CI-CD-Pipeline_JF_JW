@@ -2,6 +2,6 @@ name: Deploy Web Server to AWS
 on: 
   push: 
    branches: 
-	- main
+   - main
 
 
