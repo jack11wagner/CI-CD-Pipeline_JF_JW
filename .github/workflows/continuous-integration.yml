@@ -27,5 +27,7 @@ jobs:
         run: pip install pytest-github-actions-annotate-failures
           
       - name: Tests
-        run: .venv/bin/pytest 
+        run: |
+          .venv/bin/pytest
+          echo .venv/bin/pytest --cov simple_app.py
 
