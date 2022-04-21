@@ -1,12 +1,5 @@
 name: Run Flask Tests
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
- 
+on: [push, pull_request]
  
 jobs:
   build:
@@ -29,6 +22,12 @@ jobs:
       - name: Run Flask Server
         run: |
           .venv/bin/python3 simple_app.py &
-      - name: Run tests with pytest
-        run: .venv/bin/pytest 
+          
+      - name: Install Plugin
+        run: pip install pytest-github-actions-annotate-failures
+          
+      - name: Tests
+        run: |
+          .venv/bin/pytest
+          .venv/bin/pytest --cov simple_app.py
 
