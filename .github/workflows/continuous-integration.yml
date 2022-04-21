@@ -29,5 +29,5 @@ jobs:
       - name: Tests
         run: |
           .venv/bin/pytest
-          echo .venv/bin/pytest --cov simple_app.py
+          .venv/bin/pytest --cov simple_app.py
 
