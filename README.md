@@ -4,7 +4,7 @@ Final Project for CSCI 220
 # Table of Contents
 * [Overview](#Overview)
 * [Setup](#Setup)
-* [Technologies Used](#Technologies Used)
+* [Technologies Used](#Technologies-Used)
 * [Background](#Background)
 
 ---
@@ -47,7 +47,7 @@ Each CI/CD pipeline will be unique but the main steps in creating this pipeline 
 
 ---
 
-# Technologies Used
+# Technologies-Used
 - [Github-Actions-Demo](https://docs.github.com/en/actions/quickstart)
 - [Flask Testing](https://flask.palletsprojects.com/en/1.1.x/testing/)
 - [Pytest](https://docs.pytest.org/en/7.1.x/)
