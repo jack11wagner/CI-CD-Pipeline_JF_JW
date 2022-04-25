@@ -19,23 +19,11 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY_ID}}
           aws-region: us-east-1
           
-      - run: aws --version
-        shell: bash
+      
+      - name: Run AWS Instance via CLI
+        run: |
+           aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name Jack-Wagner-AWS-Key --security-group-ids sg-038003f5fea8708bc --user-data file://aws-up-file.sh
 
-
-#      - name: Install AWS CLI Tool
-#        run: |
-#          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-#          unzip awscliv2.zip
-#          sudo ./aws/install
-#          echo aws --version
-#      - name: Configure AWS account
-#          #TODO
-
-#      - name: Run AWS Instance via CLI
-#          run: |
-#            aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name {key_name} --security-group-ids {security_group} --user-data file://aws-up-file.sh
-#
 
 
 # aws ec2 terminate-instances --instance-ids {instance_id}
