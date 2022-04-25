@@ -23,8 +23,8 @@ jobs:
       - name: Run AWS Instance via CLI
         run: |
            ls ${{github.workspace}}
-           chmod 600 aws-up-file.sh
-           aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name Jack-Wagner-AWS-Key --security-group-ids sg-038003f5fea8708bc --user-data file://aws-up-file.sh
+       
+       # aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name Jack-Wagner-AWS-Key --security-group-ids sg-038003f5fea8708bc --user-data file://aws-up-file.sh
 
 
 
