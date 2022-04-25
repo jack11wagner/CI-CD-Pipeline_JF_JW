@@ -18,7 +18,7 @@ jobs:
       - name: Set Environment Variables
         run: | 
           touch .env
-          echo "API_KEY = ab6c5f31aaa48f332b5ffc67168bf1b69b849442" > .env
+          echo "API_KEY = ${{ secrets.NOMICS_API_KEY }}" > .env
       - name: Run Flask Server
         run: |
           .venv/bin/python3 simple_app.py &
