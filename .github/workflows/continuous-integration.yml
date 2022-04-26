@@ -10,7 +10,7 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.8
-      - name: Install dependencies into virtual env
+      - name: Install dependencies into virtual environment
         run: |
           python -m pip install --upgrade pip
           python3 -m venv .venv
