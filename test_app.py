@@ -10,13 +10,13 @@ def test_BTC_Currency():
     assert 'Currency :' in str(result.data)
 
 
-def test_last_price():
-    app.config['TESTING'] = True
-    client = app.test_client()
+# def test_last_price():
+#     app.config['TESTING'] = True
+#     client = app.test_client()
 
-    result = client.get('/')
+#     result = client.get('/')
 
-    assert 'Last Price :' in str(result.data)
+#     assert 'Last Price :' in str(result.data)
 
 
 def test_1D_price_change():
