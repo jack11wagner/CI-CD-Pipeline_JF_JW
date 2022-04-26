@@ -26,10 +26,10 @@ jobs:
       - name: Install Plugin
         run: pip install pytest-github-actions-annotate-failures
           
-      # - name: Tests
-      #   run: |
-      #     .venv/bin/pytest
-      #     .venv/bin/pytest --cov simple_app
+       - name: Tests
+         run: |
+           .venv/bin/pytest
+           .venv/bin/pytest --cov simple_app
 
       # Changes here
       - name: Super-Linter
