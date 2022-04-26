@@ -3,6 +3,9 @@ on:
   push: 
    branches: 
    - main
+permissions:
+ id-token: write
+ contents: read# This is required for actions/checkout@v2
 jobs:
   deployment:
     runs-on: ubuntu-latest
@@ -16,11 +19,13 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::168835141419:role/my-github-actions-role-deployment
+          role-to-assume: arn:aws:iam::168835141419:role/github-actions-role
+          role-session-name: DeployFlask
           aws-region: us-east-1
           
       - name: Checkout current repository
         uses: actions/checkout@v3
+        
       - name: Run AWS Instance via CLI
         run: |
            aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name Jack-Wagner-AWS-Key --security-group-ids sg-038003f5fea8708bc --user-data file://${{github.workspace}}/aws-up-file.sh
