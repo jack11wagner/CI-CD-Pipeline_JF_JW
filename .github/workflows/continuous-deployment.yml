@@ -29,6 +29,7 @@ jobs:
         
       - name: Run AWS Instance via CLI
         run: |
+           echo ${AWS_ACCESS_KEY_ID}
            aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh
 
 
