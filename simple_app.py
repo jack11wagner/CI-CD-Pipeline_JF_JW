@@ -46,7 +46,7 @@ def home():
         request_response = json.loads(urllib.request.urlopen(url).read())[NUM_CURRENCIES - 1]
     ticker_info = make_ticker_info(request_response)
     return f"""
-        <h1 style="font-family:{FONT} color = "blue";> Currency : {ticker_info.currency}  <img src="{ticker_info.logo_url}" style="width:30px;height:30px;"><h1/>
+        <h1 style="font-family:{FONT}; color:orange"> Currency : {ticker_info.currency}  <img src="{ticker_info.logo_url}" style="width:30px;height:30px;"><h1/>
         <h1 style="font-family:{FONT}" > Last Price : {ticker_info.price} <h1/>
         <h1 style="font-family:{FONT}" > 1D Price Change : {ticker_info.one_day_price_change} <h1/>"""
 
