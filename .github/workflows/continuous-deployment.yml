@@ -6,7 +6,6 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: production
     steps:
       - name: Install AWS CLI
         id: install-aws-cli
