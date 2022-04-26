@@ -27,7 +27,7 @@ jobs:
         
       - name: Run AWS Instance via CLI
         run: |
-           aws ec2 run-instances --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh
+           aws ec2 run-instances --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=btc-ticker}]' --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh
 
 
 # aws ec2 terminate-instances --instance-ids {instance_id}
