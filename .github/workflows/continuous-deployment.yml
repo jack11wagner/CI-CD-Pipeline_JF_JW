@@ -19,8 +19,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: arn:aws:iam::168835141419:role/github-actions-role
-          role-session-name: DeployFlask
+          aws-access-key-id: AKIASOT23Z4V7Q3RZXHU
+          aws-secret-access-key: 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
           aws-region: us-east-1
           
       - name: Checkout current repository
