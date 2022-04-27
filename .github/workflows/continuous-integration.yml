@@ -45,10 +45,10 @@ jobs:
          echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
          exit 1
          
-      - name: Commit pytest coverage table
-        uses: peter-evans/commit-comment@v1
-        with:
-         body: ${{ steps.pytester-cov.outputs.output-table }}
+      # - name: Commit pytest coverage table
+      #   uses: peter-evans/commit-comment@v1
+      #   with:
+      #    body: ${{ steps.pytester-cov.outputs.output-table }}
 
       - name: Lint with pylint
         run: |
