@@ -36,7 +36,6 @@ pull requests are opened and deploy our tested code to production whenever a pul
 - Our deployment is in the form of an aws instance which deploys our original flask server using gunicorn
 - Using the aws cli we use the run-instances command which deploys our tested and ready for production code as an EC2 instance
 
-- <mark>TODO</mark>
 ---
 
 # Setup
@@ -65,13 +64,25 @@ Each CI/CD pipeline will be unique but the main steps in creating this pipeline 
       - Now the CI only allows merging if the code is both automatically mergeable and the tests have passed.
 4. For the CD part of this pipeline we decided to use AWS to deploy our production code but there are a number of other otpions out there for continuous deployment
 - For AWS in particular we had to configure our AWS cli with credentials from our AWS account before being able to launch instances from our workflow file
+- Visit this page for information on how to configure the AWS CLI - [AWS CLI SETUP](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+  - You will need to create an ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` to configure the aws cli this is done by going to the **IAM>USERS>SECURITY CREDENTIALS>CREATE ACCESS KEY** here you will be able to create these two credentials.
+  - These credentials will be stored in our repo with Github secrets
 - Using Github Secrets is very important to maintaining the privacy of our sensitive Key information
   
    - In order to create a repository secret go to **Settings > Secrets > Actions** and you can create encrypted secrets there to be used in any github actions files
    - In order to access these values here is an example: 
   
      - ```key : ${{ secrets.KEY_SECRET }}```
-- <mark>TODO</mark>
+- Once our aws cli was configured with our account, we used the command ```aws ec2 run-instances``` in order to deploy our updated instance of our web server 
+
+  - This page has more information on the ```run-instances``` command [run-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html)
+  - With this ```run-instances``` command you are able to launch an instance from the command line if you specify the proper parameters such as 
+      - --image-id
+      - --instance-type
+      - --user-data
+      - --security-groups
+
+- After these setup instructions are complete your repo should have functional CI and CD capabilities to test and deploy automatically
 
 
 ---
@@ -81,13 +92,11 @@ Each CI/CD pipeline will be unique but the main steps in creating this pipeline 
 - [Flask Testing](https://flask.palletsprojects.com/en/1.1.x/testing/)
 - [Pytest](https://docs.pytest.org/en/7.1.x/)
 - [Pytest-Cov](https://pypi.org/project/pytest-cov/)
-- [AWS-CLI-Tool](https://aws.amazon.com/cli/)
+- [AWS-CLI](https://aws.amazon.com/cli/)
 - [AWS-run-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html)
 
 # Background
 - [Branch Protection Rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule)
 - [Github Secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-- <mark>TODO</mark>
-<!--  launching instance with aws using continuous deployment
-aws ec2 run-instances -image-id ami- {find this on aws} use user data -->
+- [AWS CLI](https://aws.amazon.com/cli/)
 
