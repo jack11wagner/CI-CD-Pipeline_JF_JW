@@ -35,13 +35,14 @@ jobs:
         id: pytester-cov
         uses: programmingwithalex/pytester-cov@v1.2.4
         with:
+         pytest-tests-dir: .
          cov-threshold-total: 95
          
-      - name: Coverage total fail - exit
-        if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
-        run: |
-         echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
-         exit 1
+#       - name: Coverage total fail - exit
+#         if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
+#         run: |
+#          echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
+#          exit 1
          
       - name: Commit pytest coverage table
         uses: peter-evans/commit-comment@v1
