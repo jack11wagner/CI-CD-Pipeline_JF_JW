@@ -35,4 +35,4 @@ jobs:
       - name: Lint with pylint
         run: |
           pip install pylint
-          find .venv/bin/python3 -name '*.py' -exec pylint
+          find .venv/bin/python3 -name '*.py' -exec pylint {} \;
