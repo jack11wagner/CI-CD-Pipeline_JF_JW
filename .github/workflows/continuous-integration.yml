@@ -31,30 +31,32 @@ jobs:
           .venv/bin/pytest
           .venv/bin/pytest --cache-clear --cov simple_app 
           
-      # - name: pytester-cov
-      #   id: pytester-cov
-      #   uses: programmingwithalex/pytester-cov@v1.2.4
-      #   with:
-      #    cov-omit-list: '.venv/*'
-      #    pytest-tests-dir: .
-      #    cov-threshold-total: 95
+      - name: pytester-cov
+        id: pytester-cov
+        uses: programmingwithalex/pytester-cov@v1.2.4
+        with:
+         cov-omit-list: '.venv/*'
+         pytest-tests-dir: .
+         cov-threshold-total: 95
          
-      # - name: Check Coverage Threshold
-      #   if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
-      #   run: |
-      #    echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
-      #    exit 1
+      - name: Check Coverage Threshold
+        if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
+        run: |
+         echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
+         exit 1
          
       - name: Lint with pylint
         run: |
           pip install pylint
+          pip install flask
+          pip install python-dotenv
           pylint -d invalid-name -d consider-using-with simple_app.py
           pylint -d invalid-name -d consider-using-with -d missing-module-docstring -d missing-function-docstring test_app.py 
-
-      # - name: Commit pytest coverage table
-      #   uses: peter-evans/commit-comment@v1
-      #   with:
-      #    token: ${{secrets.GITHUB_TOKEN}}
-      #    body: ${{ steps.pytester-cov.outputs.output-table }}
+          
+      - name: Commit pytest coverage table
+        uses: peter-evans/commit-comment@v1
+        with:
+         token: ${{secrets.GITHUB_TOKEN}}
+         body: ${{ steps.pytester-cov.outputs.output-table }}
 
 
