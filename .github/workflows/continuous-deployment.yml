@@ -26,7 +26,7 @@ jobs:
         
       - name: Terminate any open instances
         run: |
-           ${{github.workspace}}/terminate-all-existing-instances.sh
+           ${{github.workspace}}/terminate-current-instances.sh
         
         
       - name: Run AWS Instance via CLI
