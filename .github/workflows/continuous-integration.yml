@@ -29,7 +29,7 @@ jobs:
       - name: Tests
         run: |
           .venv/bin/pytest
-          .venv/bin/pytest --cache-clear --cov simple_app > coverage.txt
+          .venv/bin/pytest --cache-clear --cov simple_app 
           
       - name: pytester-cov
         id: pytester-cov
@@ -42,5 +42,10 @@ jobs:
         run: |
          echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
          exit 1
+         
+      - name: Commit pytest coverage table
+        uses: peter-evans/commit-comment@v1
+        with:
+         body: ${{ steps.pytester-cov.outputs.output-table }}
 
 
