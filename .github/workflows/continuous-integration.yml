@@ -39,7 +39,7 @@ jobs:
          pytest-tests-dir: .
          cov-threshold-total: 95
          
-      - name: Coverage total fail - exit
+      - name: Check Coverage Threshold
         if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
         run: |
          echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
