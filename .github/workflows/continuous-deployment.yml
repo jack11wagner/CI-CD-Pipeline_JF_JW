@@ -24,12 +24,23 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
         
+      - name: Terminate any open instances
+        run: |
+           source ${{github.workspace}}/terminate-current-instances.sh
+        
         
       - name: Run AWS Instance via CLI
         run: |
-           aws ec2 run-instances --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=btc-ticker}]' --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh > instance.txt
-           INSTANCE_ID="$(grep -o '"InstanceId": "[^"]*' instance.txt | grep -o '[^"]*$')" 
-           echo $INSTANCE_ID
+           aws ec2 run-instances --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=btc-ticker}]' --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh > run-instances.txt
+           INSTANCE_ID="$(grep -o '"InstanceId": "[^"]*' run-instances.txt | grep -o '[^"]*$')"
+ 
+      - name: Output Instance Link
+        run: |
+          aws ec2 describe-instances --filters "Name=instance-state-name,Values=pending,running"> describe-instance.txt         
+          INSTANCE_IP="$(grep -o '"PublicIpAddress": "[^"]*' describe-instance.txt | grep -o '[^"]*$')"
+          echo "http://$INSTANCE_IP"
+          
+          
 
 
 # aws ec2 terminate-instances --instance-ids {instance_id}
