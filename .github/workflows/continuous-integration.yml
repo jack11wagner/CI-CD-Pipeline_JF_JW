@@ -34,6 +34,7 @@ jobs:
           echo "Test Coverage: $cov_score"
           
       - name: Check Test Coverage
+        if: expr $cov_score + 0 < 95
         run: |
            echo $cov_score
 
