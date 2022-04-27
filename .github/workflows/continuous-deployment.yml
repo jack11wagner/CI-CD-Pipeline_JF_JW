@@ -31,14 +31,13 @@ jobs:
         
       - name: Run AWS Instance via CLI
         run: |
-           aws ec2 run-instances --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=btc-ticker}]' --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh > instance.txt
+           aws ec2 run-instances --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=btc-ticker}]' --image-id ami-0f9fc25dd2506cf6d --count 1 --instance-type t2.micro --key-name ${{ secrets.KEY_NAME }} --security-group-ids ${{ secrets.SECURITY_GROUP }} --user-data file://${{github.workspace}}/aws-up-file.sh
  
       - name: Output Instance Link
         run: |
           aws ec2 describe-instances --filters "Name=instance-type,Values=t2.micro"> instance.txt         
           INSTANCE_IP="$(grep -o '"PublicIpAddress": "[^"]*' instance.txt | grep -o '[^"]*$')"
           cat instance.txt
-          echo "$INSTANCE_IP"
           echo "http://$INSTANCE_IP"
           
           
