@@ -36,7 +36,7 @@ jobs:
  
       - name: Output Instance Link
         run: |
-          aws ec2 describe-instances --filters "Name=instance-state-name,Values=pending OR Name=instance-state-name,Values=running"> describe-instance.txt         
+          aws ec2 describe-instances --filters "Name=instance-state-name,Values=pending"> describe-instance.txt         
           INSTANCE_IP="$(grep -o '"PublicIpAddress": "[^"]*' describe-instance.txt | grep -o '[^"]*$')"
           cat describe-instance.txt
           echo "http://$INSTANCE_IP"
