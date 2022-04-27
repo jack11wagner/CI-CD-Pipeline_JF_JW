@@ -29,13 +29,11 @@ jobs:
       - name: Tests
         run: |
           .venv/bin/pytest
-          .venv/bin/pytest --cov simple_app | Tee coverage.txt
-          cov_score=$(awk '$1 == "TOTAL" {print $NF+0}' coverage.txt)
-          echo "Test Coverage: $cov_score"
+          .venv/bin/pytest --cache-clear --cov simple_app | Tee coverage.txt
           
       - name: Check Test Coverage
-        if: expr $cov_score + 0 < 95
-        run: |
-           echo $cov_score
+        uses: coroo/pytest-coverage-commentator@v1.0.2
+        with:
+          pytest-coverage: coverage.txt
 
 
