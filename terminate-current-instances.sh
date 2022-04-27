@@ -4,3 +4,4 @@ do
  echo "terminating the instance with id $line"
  aws ec2 terminate-instances --instance-ids $line
 done
+
