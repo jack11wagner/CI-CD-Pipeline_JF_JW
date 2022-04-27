@@ -25,15 +25,9 @@ jobs:
           
       - name: Install Plugin
         run: pip install pytest-github-actions-annotate-failures
-          
-      # - name: Tests
-      #   run: |
-      #     .venv/bin/pytest
-      #     .venv/bin/pytest --cov simple_app
 
-      # Changes here
       - name: Lint with pylint
         run: |
           pip install pylint
-          pylint simple_app.py
-          pylint test_app.py
+          pylint -d invalid-name -d consider-using-with simple_app.py
+          pylint -d invalid-name -d consider-using-with test_app.py
