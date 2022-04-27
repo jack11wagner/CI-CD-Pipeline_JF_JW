@@ -54,4 +54,4 @@ jobs:
         run: |
           pip install pylint
           pylint -d invalid-name -d consider-using-with simple_app.py
-          pylint -d invalid-name -d consider-using-with test_app.py
+          pylint -d invalid-name -d consider-using-with -d missing-module-docstring -d missing-function-docstring test_app.py 
