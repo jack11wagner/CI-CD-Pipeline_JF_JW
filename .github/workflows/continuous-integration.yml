@@ -31,9 +31,16 @@ jobs:
           .venv/bin/pytest
           .venv/bin/pytest --cache-clear --cov simple_app > coverage.txt
           
-      - name: Check Test Coverage
-        uses: coroo/pytest-coverage-commentator@v1.0.2
+      - name: pytester-cov
+        id: pytester-cov
+        uses: programmingwithalex/pytester-cov@v1.2.4
         with:
-          pytest-coverage: coverage.txt
+         cov-threshold-total: 95
+         
+      - name: Coverage total fail - exit
+        if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
+        run: |
+         echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
+         exit 1
 
 
