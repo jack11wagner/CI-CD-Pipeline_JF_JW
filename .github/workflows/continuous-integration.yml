@@ -29,12 +29,12 @@ jobs:
       - name: Tests
         run: |
           .venv/bin/pytest
-          .venv/bin/pytest --cov simple_app > coverage.txt
+          .venv/bin/pytest --cov simple_app | Tee coverage.txt
           cov_score=$(awk '$1 == "TOTAL" {print $NF+0}' coverage.txt)
-          echo $cov_score
+          echo "Test Coverage: $cov_score"
           
-     # - name: Check Test Coverage
-       # if: ${{ cov_score }} < 95
-      #  run: exit 1
+      - name: Check Test Coverage
+        if: ${{ cov_score }} < 95
+        run: exit 1
 
 
