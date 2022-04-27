@@ -35,7 +35,8 @@ jobs:
         id: pytester-cov
         uses: programmingwithalex/pytester-cov@v1.2.4
         with:
-         pytest-tests-dir: /home/runner/work/CI-CD-Pipeline_JF_JW/CI-CD-Pipeline_JF_JW
+         cov-omit-list: '.venv/*'
+         pytest-tests-dir: .
          cov-threshold-total: 95
          
 #       - name: Coverage total fail - exit
