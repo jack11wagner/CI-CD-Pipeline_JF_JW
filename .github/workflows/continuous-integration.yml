@@ -29,7 +29,7 @@ jobs:
       - name: Tests
         run: |
           .venv/bin/pytest
-          .venv/bin/pytest --cache-clear --cov simple_app | Tee coverage.txt
+          .venv/bin/pytest --cache-clear --cov simple_app > coverage.txt
           
       - name: Check Test Coverage
         uses: coroo/pytest-coverage-commentator@v1.0.2
