@@ -50,7 +50,6 @@ jobs:
         with:
          body: ${{ steps.pytester-cov.outputs.output-table }}
 
-
       - name: Lint with pylint
         run: |
           pip install pylint
