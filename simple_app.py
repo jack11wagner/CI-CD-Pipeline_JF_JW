@@ -11,7 +11,7 @@ from flask import Flask
 
 app = Flask(__name__)
 load_dotenv()
-url = "https://api.nomics.com/v1/currencies/ticker"
+URL = "https://api.nomics.com/v1/currencies/ticker"
 TickerInfo = namedtuple('TickerInfo', ['currency', 'logo_url', 'name', 'price', 'rank',
                                        'one_day_price_change', 'one_day_price_change_pct',
                                        'thirty_day_price_change', 'thirty_day_price_change_pct'])
@@ -21,7 +21,7 @@ def get_request_url(api_key, tickers):
     """
     Returns response from API call reqiring api_key and tickers
     """
-    return f"{url}?key={api_key}&exchange=binance&ids={tickers}&interval=1d,30d&convert=USD&"
+    return f"{URL}?key={api_key}&exchange=binance&ids={tickers}&interval=1d,30d&convert=USD&"
 
 
 def format_floats(num_to_format):
