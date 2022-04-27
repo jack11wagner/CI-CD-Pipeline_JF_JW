@@ -34,6 +34,6 @@ jobs:
           echo $cov_score
       - name: Check Test Coverage
         if: ${{ cov_score }} < 95
-      - run: exit 1
+        run: exit 1
 
 
