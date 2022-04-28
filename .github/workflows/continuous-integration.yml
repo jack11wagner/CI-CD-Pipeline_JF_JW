@@ -53,9 +53,9 @@ jobs:
           pylint -d invalid-name -d consider-using-with simple_app.py
           pylint -d invalid-name -d consider-using-with -d missing-module-docstring -d missing-function-docstring test_app.py 
           
-      - name: Commit pytest coverage table
-        uses: peter-evans/commit-comment@v1
-        with:
-         body: ${{ steps.pytester-cov.outputs.output-table }}
+      # - name: Commit pytest coverage table
+      #   uses: peter-evans/commit-comment@v1
+      #   with:
+      #    body: ${{ steps.pytester-cov.outputs.output-table }}
 
 
