@@ -45,7 +45,10 @@ jobs:
          echo "Coverage fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
          exit 1
          
-      - name: Commit pytest coverage table
-        run: echo "${{ steps.pytester-cov.outputs.output-table }}"
-
-
+      - name: Lint with pylint
+        run: |
+          pip install pylint
+          pip install flask
+          pip install python-dotenv
+          pylint -d invalid-name -d consider-using-with simple_app.py
+          pylint -d invalid-name -d consider-using-with -d missing-module-docstring -d missing-function-docstring test_app.py 
