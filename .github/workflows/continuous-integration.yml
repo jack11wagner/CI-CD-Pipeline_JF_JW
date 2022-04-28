@@ -46,12 +46,14 @@ jobs:
          exit 1
 
       - name: Commit message for Coverage Report
+        id: commit-comment-for-coverage
         uses: peter-evans/commit-comment@v2
         env:
           PAT: ${{ secrets.PAT }}
         with:
             token: ${{ PAT }}
             body: ${{ steps.pytester-cov.outputs.output-table }}
+
       - name: Lint with pylint
         run: |
           pip install pylint
