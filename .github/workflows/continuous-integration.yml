@@ -49,7 +49,7 @@ jobs:
         id: commit-comment-for-coverage
         uses: peter-evans/commit-comment@v2
         with:
-            token: ${{ secrets.PAT }}
+            token: ${{ secrets.GITHUB_TOKEN }}
             body: ${{ steps.pytester-cov.outputs.output-table }}
 
       - name: Lint with pylint
