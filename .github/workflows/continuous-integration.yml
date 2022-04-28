@@ -46,6 +46,6 @@ jobs:
          exit 1
          
       - name: Commit pytest coverage table
-        run: echo ${{ steps.pytester-cov.outputs.output-table }}
+        run: echo "${{ steps.pytester-cov.outputs.output-table }}"
 
 
