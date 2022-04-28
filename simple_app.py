@@ -19,7 +19,7 @@ TickerInfo = namedtuple('TickerInfo', ['currency', 'logo_url', 'name', 'price', 
 
 def get_request_url(api_key, tickers):
     """
-    Returns response from API call reqiring api_key and tickers as parameters
+    Returns response from API call reqiring api_key and tickers
     """
     return f"{URL}?key={api_key}&exchange=binance&ids={tickers}&interval=1d,30d&convert=USD&"
 
