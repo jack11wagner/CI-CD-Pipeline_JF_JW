@@ -91,7 +91,7 @@ Each CI/CD pipeline will be unique but the main steps in creating this pipeline 
 - [Github-Actions-Demo](https://docs.github.com/en/actions/quickstart)
 - [Flask Testing](https://flask.palletsprojects.com/en/1.1.x/testing/)
 - [Pytest](https://docs.pytest.org/en/7.1.x/)
-- [Pytest-Cov](https://pypi.org/project/pytest-cov/)
+- [Pytest-Cov](https://github.com/marketplace/actions/pytester-cov)
 - [AWS-CLI](https://aws.amazon.com/cli/)
 - [AWS-run-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html)
 - [PyLint](https://pylint.pycqa.org/en/latest/)
