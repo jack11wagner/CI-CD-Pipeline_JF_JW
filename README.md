@@ -17,7 +17,7 @@ pull requests are opened and deploy our tested code to production whenever a pul
 - The Continuous Integration part refers to the process of integrating new code into shared repositories easily by having tests in place to validate new code
 - This is a solution to having conflicting branches in a repo, if we are constantly testing new pushes/pull requests our code will be functional and ready for production
 - The Continuous Development/Deployment aspect makes this new code readily available in production whenever we merge into the main branch aka production code
-- 
+
 ### Continuous Integration
 - Using github actions our yml file will be triggered any time a pull request is opened, we want to run tests to check the pull request and make sure our code is working properly
 - By specifying the on: [pull request] this represents the trigger for the script to run
@@ -94,6 +94,7 @@ Each CI/CD pipeline will be unique but the main steps in creating this pipeline 
 - [Pytest-Cov](https://pypi.org/project/pytest-cov/)
 - [AWS-CLI](https://aws.amazon.com/cli/)
 - [AWS-run-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html)
+- [PyLint](https://pylint.pycqa.org/en/latest/)
 
 # Background
 - [Branch Protection Rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule)
