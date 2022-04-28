@@ -48,6 +48,7 @@ jobs:
       - name: Commit message for Coverage
         uses: peter-evans/commit-comment@v2
         with:
+            token: ${{ secrets.PAT }}
             body: ${{ steps.pytester-cov.outputs.output-table }}
          
       - name: Lint with pylint
